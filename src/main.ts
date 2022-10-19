@@ -1,5 +1,6 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -18,6 +19,16 @@ async function bootstrap() {
       },
     }),
   );
+  //swagger
+  const config = new DocumentBuilder()
+    .setTitle('Pokemons example')
+    .setDescription('The Pokemons API')
+    .setVersion('1.0')
+    .addTag('pokemons')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
+
   await app.listen(3000);
 }
 bootstrap();
