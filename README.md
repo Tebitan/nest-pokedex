@@ -43,3 +43,12 @@ http://localhost:3000/api/v2/seed
 
 - MogoDB
 - Nest
+
+# Notas
+
+Keroku redeploy sin cambios
+
+```
+git commit --allow-empaty -m "Tigger Heroku deploy"
+git push heroku main
+```
